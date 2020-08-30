@@ -1,2 +1,6 @@
 # Pruebas_TW
-Scripts con pruebas para generar contenido en twitter
+Scripts con pruebas para generar contenido automatico en twitter
+
+## Requisitos
+- Pandas
+- tweepy
