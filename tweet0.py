@@ -55,14 +55,14 @@ def create_tweet(tweet_text):
     # Creando un tweet
     api.update_status(tweet_text)
 
-def create_tweet_media(img,tweet_text):
+def create_tweet_media(filenames,tweet_text):
     """
 
     Parameters
     ----------
-    img : media
-        Imagen, gift o video a publicar.
-        Ejemplo = "Imagen.jpg"
+    filenames : media
+        Lista con Imagen, gift o video a publicar.
+        Ejemplo =>  ['1.png', '2.png', ...]
     tweet_text : string
         Texto a colocar en tweet
 
@@ -104,6 +104,12 @@ def create_tweet_media(img,tweet_text):
         print('Friends: ' + str(user.friends_count))
         print('Followers: ' + str(user.followers_count))
   
-    #Creando tweet con media
-    api.update_with_media(img, status=tweet_text)
+    # Upload images and get media_ids
+    media_ids = []
+    for filename in filenames:
+        res = api.media_upload(filename)
+        media_ids.append(res.media_id)
+     
+    #Creando tweet con media_ids
+    api.update_status(media_ids=media_ids, status=tweet_text)
 
