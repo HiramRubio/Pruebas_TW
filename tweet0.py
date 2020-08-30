@@ -7,13 +7,14 @@ Created on Fri Dec 20 09:47:01 2019
 Automatización de tweets con python 
 """
 
-def create_tweet(tweet_text):
+def create_tweet(tweet_text, myData = False):
     """
     Parameters
     ----------
     tweet_text : string
         Texto a colocar en un tweet
-
+    myData: bool
+        Bandera para imprimir o no los datos de la cuenta
     Returns
     -------
     None.
@@ -46,7 +47,7 @@ def create_tweet(tweet_text):
      
     #Resumen de la informacion de la cuenta
     user = api.me()
-    if(True):
+    if(myData):
         print('Name: ' + user.name)
         print('Location: ' + user.location)
         print('Friends: ' + str(user.friends_count))
@@ -55,7 +56,7 @@ def create_tweet(tweet_text):
     # Creando un tweet
     api.update_status(tweet_text)
 
-def create_tweet_media(filenames,tweet_text):
+def create_tweet_media(filenames,tweet_text, myData = False):
     """
 
     Parameters
@@ -63,6 +64,8 @@ def create_tweet_media(filenames,tweet_text):
     filenames : media
         Lista con Imagen, gift o video a publicar.
         Ejemplo =>  ['1.png', '2.png', ...]
+    myData: boole
+        Bandera para imprimir o no los datos de la cuenta
     tweet_text : string
         Texto a colocar en tweet
 
@@ -98,7 +101,7 @@ def create_tweet_media(filenames,tweet_text):
      
     #Resumen de la informacion de la cuenta
     user = api.me()
-    if(True):
+    if(myData):
         print('Name: ' + user.name)
         print('Location: ' + user.location)
         print('Friends: ' + str(user.friends_count))
